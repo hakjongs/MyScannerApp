@@ -6,25 +6,39 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { ScanPage } from '../pages/scan/scan';
+
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { Toast } from '@ionic-native/toast';
+import { DataServiceProvider } from '../providers/data-service/data-service';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    ScanPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    ScanPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    BarcodeScanner,
+    Toast,
+    DataServiceProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
+
+
   ]
 })
 export class AppModule {}
